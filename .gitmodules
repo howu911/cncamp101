@@ -1,0 +1,6 @@
+[submodule "helm/testapi"]
+	path = helm/testapi
+	url = http://github.com/zhaohuabing/testapi.git
+[submodule "myself/operator/etcd-operator"]
+	path = myself/operator/etcd-operator
+	url = https://github.com/coreos/etcd-operator
