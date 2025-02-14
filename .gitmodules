@@ -4,3 +4,17 @@
 [submodule "myself/operator/etcd-operator"]
 	path = myself/operator/etcd-operator
 	url = https://github.com/coreos/etcd-operator
+[submodule "myself/ray_stu/kuberay-helm"]
+	path = myself/ray_stu/kuberay-helm
+	url = https://github.com/ray-project/kuberay-helm.git
+    ignore = all
+[submodule "myself/ray_stu/kuberay"]
+	path = myself/ray_stu/kuberay
+	url = https://github.com/ray-project/kuberay.git
+    ignore = all
+[submodule "myself/operator/operator_stu/kubebuilder/i-operator"]
+	path = myself/operator/operator_stu/kubebuilder/i-operator
+	url = https://github.com/lixd/i-operator.git
+[submodule "myself/operator/operator_stu/kubebuilder/i-operator-myself"]
+	path = myself/operator/operator_stu/kubebuilder/i-operator-myself
+	url = https://github.com/howu911/i-operator-myself.git
