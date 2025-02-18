@@ -18,3 +18,6 @@
 [submodule "myself/operator/operator_stu/kubebuilder/i-operator-myself"]
 	path = myself/operator/operator_stu/kubebuilder/i-operator-myself
 	url = https://github.com/howu911/i-operator-myself.git
+[submodule "myself/ray_stu/ray"]
+	path = myself/ray_stu/ray
+	url = https://github.com/ray-project/ray.git
