@@ -1,0 +1,86 @@
+{
+    "kind": "ReplicationController",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "ray-head",
+        "namespace": "1",
+        "creationTimestamp": null,
+        "annotations": {
+            "deployPriority": "1",
+            "ulimit": "[{\"container\":\"ray-head\", \"value\":\"rtprio=99, msgqueue=-1, nproc=-1\"}]"
+        }
+    },
+    "spec": {
+        "replicas": 1,
+        "template": {
+            "metadata": {
+                "name": "ray-head",
+                "creationTimestamp": null,
+                "labels": {
+                    "name": "ray-head"
+                },
+                "annotations": {
+                    "seccompProfile": "{\"type\":\"Localhost\",\"localhostProfile\":\"/etc/luban/seccompconfig/itran_default.json\"}"
+                }
+            },
+            "spec": {
+                "volumes": [
+                ],
+                "containers": [
+                    {
+                        "name": "ray-head",
+                        "image": "latest-cpu",
+                        "env": [
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "ephemeral-storage": "2Gi",
+                                "memory": "2Gi"
+                            },
+                            "requests": {
+                                "cpu": "30m",
+                                "memory": "85899345920m"
+                            }
+                        },
+                        "volumeMounts": [
+                        ],
+                        "imagePullPolicy": "IfNotPresent",
+                        "securityContext": {
+                            "privileged": false
+                        },
+                        "stdin": true,
+                        "tty": true
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 0,
+                "nodeSelector": {
+                    "host": "master"
+                },
+                "securityContext": {
+                }
+            }
+        }
+    },
+    "status": {
+        "replicas": 0
+    },
+    "interfaces": [
+        {
+            "networkplane": "media",
+            "name": "eth_media",
+            "mtu": "1500"
+        },
+        {
+            "networkplane": "std",
+            "name": "eth0",
+            "mtu": "1500"
+        },
+        {
+            "networkplane": "control",
+            "name": "eth_control",
+            "mtu": "1500"
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "kind": "ReplicationController",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "ray-worker",
+        "namespace": "1",
+        "creationTimestamp": null,
+        "annotations": {
+            "deployPriority": "1"
+        }
+    },
+    "spec": {
+        "replicas": 1,
+        "template": {
+            "metadata": {
+                "name": "ray-worker",
+                "creationTimestamp": null,
+                "labels": {
+                    "name": "ray-worker"
+                },
+                "annotations": {
+                }
+            },
+            "spec": {
+                "hostNetwork": true,
+                "volumes": [
+                ],
+                "containers": [
+                    {
+                        "name": "ray-worker",
+                        "image": "ray:2.42.1-cpu-aarch64",
+                        "command": [ "tail", "-f", "/dev/null" ],
+                        "env": [
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "ephemeral-storage": "2Gi",
+                                "memory": "8Gi"
+                            },
+                            "requests": {
+                                "cpu": "30m",
+                                "memory": "85899345920m"
+                            }
+                        },
+                        "volumeMounts": [
+                        ],
+                        "imagePullPolicy": "IfNotPresent",
+                        "securityContext": {
+                            "privileged": false
+                        },
+                        "stdin": true,
+                        "tty": true
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 0,
+                "nodeSelector": {
+                },
+                "securityContext": {
+                }
+            }
+        }
+    },
+    "status": {
+        "replicas": 0
+    },
+    "interfaces": [
+    ]
+}

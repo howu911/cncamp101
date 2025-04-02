@@ -3,6 +3,8 @@ services:
   ray-head:
     image: rayproject/ray:latest-cpu
     container_name: ray-head
+    volumes:
+      - /home/laijiatao:/home/laijiatao
     command: >
       tail -f /dev/null
     network_mode: host

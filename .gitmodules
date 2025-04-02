@@ -21,3 +21,6 @@
 [submodule "myself/ray_stu/ray"]
 	path = myself/ray_stu/ray
 	url = https://github.com/ray-project/ray.git
+[submodule "myself/ray_stu/ray_serve/distilbert-base-uncased-finetuned-sst-2-english"]
+	path = myself/ray_stu/ray_serve/distilbert-base-uncased-finetuned-sst-2-english
+	url = https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english
