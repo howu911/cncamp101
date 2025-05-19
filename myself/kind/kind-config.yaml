@@ -1,0 +1,45 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: kind-cluster
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            v: "10"   # 控制平面 kubelet 日志等级
+      - |
+        kind: ClusterConfiguration
+        apiServer:
+          extraArgs:
+            v: "10"   # apiserver 日志等级
+        controllerManager:
+          extraArgs:
+            v: "10"   # controller-manager 日志等级
+        scheduler:
+          extraArgs:
+            v: "10"   # scheduler 日志等级
+    extraMounts:
+      - hostPath: /home/howu
+        containerPath: /home/howu
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            v: "10"   # 工作节点 kubelet 日志等级
+    extraMounts:
+      - hostPath: /home/howu
+        containerPath: /home/howu
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            v: "10"
+    extraMounts:
+      - hostPath: /home/howu
+        containerPath: /home/howu
