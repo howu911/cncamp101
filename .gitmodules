@@ -24,3 +24,9 @@
 [submodule "myself/ray_stu/ray_serve/distilbert-base-uncased-finetuned-sst-2-english"]
 	path = myself/ray_stu/ray_serve/distilbert-base-uncased-finetuned-sst-2-english
 	url = https://huggingface.co/distilbert/distilbert-base-uncased-finetuned-sst-2-english
+[submodule "myself/sche_stu/i-scheduler-extender"]
+	path = myself/sche_stu/i-scheduler-extender
+	url = https://github.com/lixd/i-scheduler-extender.git
+[submodule "myself/sche_stu/i-scheduler"]
+	path = myself/sche_stu/i-scheduler
+	url = https://github.com/lixd/i-scheduler.git
