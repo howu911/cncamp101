@@ -1,0 +1,95 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi-path-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # 配置特定路径注解示例
+spec:
+  rules:
+  - host: test.example.com  # 替换为您自己的域名
+    http:
+      paths:
+      # API V1 路径映射到 api-service
+      - path: /api/v1
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80
+              
+      # API V2 路径映射到 status-service
+      - path: /api/v2
+        pathType: Prefix
+        backend:
+          service:
+            name: status-service
+            port:
+              number: 80
+              
+      # 应用路径映射到 dashboard-service
+      - path: /app
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard-service
+            port:
+              number: 80
+              
+      # 根路径映射到 api-service
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80
+              
+---
+# 子域名方式的Ingress配置示例
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: subdomain-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  # API子域名
+  - host: api.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80
+              
+  # 状态子域名
+  - host: status.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: status-service
+            port:
+              number: 80
+              
+  # 仪表板子域名
+  - host: dashboard.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard-service
+            port:
+              number: 80 

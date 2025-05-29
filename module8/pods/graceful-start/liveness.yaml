@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
     - name: liveness
-      image: centos
+      image: ubuntu
       args:
         - /bin/sh
         - -c

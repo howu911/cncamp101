@@ -1,3 +1,5 @@
 .idea
 .vscode
 .vs
+myself/kind/nerdctl-1.7.6-linux-amd64.tar.gz
+myself/backend/ingress_backend.tar

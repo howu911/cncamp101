@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-test-backend
+  labels:
+    app: ingress-test-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ingress-test-backend
+  template:
+    metadata:
+      labels:
+        app: ingress-test-backend
+    spec:
+      containers:
+      - name: backend
+        image: ${YOUR_DOCKER_REGISTRY}/ingress-test-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-test-backend
+spec:
+  selector:
+    app: ingress-test-backend
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP 

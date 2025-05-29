@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web-server  # 匹配Deployment中Pod的标签
+  ports:
+    - protocol: TCP
+      port: 80       # Service对外暴露的端口
+      targetPort: 80 # 转发到Pod的端口
+  type: ClusterIP
