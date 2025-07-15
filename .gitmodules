@@ -30,3 +30,6 @@
 [submodule "myself/sche_stu/i-scheduler"]
 	path = myself/sche_stu/i-scheduler
 	url = https://github.com/lixd/i-scheduler.git
+[submodule "HAMi"]
+	path = myself/vgpu/HAMi
+	url = https://github.com/Project-HAMi/HAMi.git
